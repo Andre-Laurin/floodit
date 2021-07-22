@@ -51,9 +51,12 @@ def win_check():
     win_text.value = "Moves: " + str(moves_countdown)
     if moves_taken < moves_limit:
         if all_squares_are_the_same():
-            win_text.value = "You win!\nClick on any color to start a new game."
+            win_text.value = "You win with " + str(moves_limit - moves_taken) + " moves left!\nClick on any color to start a new game."
     else:
-        win_text.value = "You lost :(\nClick on any color to start a new game."
+        if all_squares_are_the_same():
+            win_text.value = "You win with " + str(moves_limit - moves_taken) + " moves left!\nClick on any color to start a new game."
+        else:
+            win_text.value = "You lost :(\nClick on any color to start a new game."
     if moves_taken > moves_limit:
         moves_taken = 0
         fill_board()
